@@ -44,10 +44,10 @@ main {
     margin: 0 auto;
     border: 1px solid #ededed;
     font-size: 1.71428571428514rem;
-    box-shadow: 0 2px 4px 0 #e6e6e6;
+    box-shadow: 0 2px 4px 0 #ededed;
 
 }
-
+/*Inputbox*/
 input{
     padding:1rem 0 1rem 60px;
     font-weight: lighter;
@@ -59,4 +59,46 @@ input::placeholder{
     color: #e6e6e6;
     font-weight: lighter;
     font-style: italic;
+}
+
+/*List*/
+ul.todolist{
+    display: block;
+}
+
+ul.todolist > li{
+    overflow: auto;
+    display: inline-block;
+    list-style-type: none;
+    border-top:1px solid #ededed;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.todoitem{
+    float: left;
+    padding-left: 0.5rem;
+    text-align: center;
+    line-height: 40px;
+    width: 60px;
+}
+
+.todoitem__label{
+    float: left;
+    width: calc(100% - 120px);
+    color: #4d4d4d;
+    line-height: 40px;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+
+button{
+    border: none;
+    color: #af2f2f;
+    background-color: transparent;
+}
+
+li:hover button::after{
+    content: "×";
 }
