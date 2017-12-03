@@ -102,3 +102,18 @@ button{
 li:hover button::after{
     content: "×";
 }
+
+.todoitem > [type="checkbox"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 30px;
+}
+
+.todoitem > [type="checkbox"]::after{
+    content: url("if_uncheck.svg");
+}
+
+.todoitem > [type="checkbox"]:checked::after{
+    content: url("if_check.svg");
+}
