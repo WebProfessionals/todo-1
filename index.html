@@ -11,17 +11,17 @@
 </head>
 <body>
 
-    <header>
-        <h1>todos</h1>
+    <header class="header">
+        <h1 class="header__title">todos</h1>
     </header>
-    <main>
-        <input type="text" placeholder="Was muss getan werden?">
-        <ul class="todolist">
-            <li>
-                <label>
-                <div class="todoitem"><input type="checkbox" value="done"></div>
-                <div class="todoitem__label" title="Milch bearbeiten und überhaupt">Milch bearbeiten und überhaupt</div>
-                <div class="todoitem"><button></button></div>
+    <main class="content">
+        <input class="content__inputfield" type="text" placeholder="Was muss getan werden?">
+        <ul>
+            <li class="todo__item">
+                <label class="todo__label">
+                <div class="todo__checkbox"><input class="checkbox__input" type="checkbox" value="done"></div>
+                <div class="todo__labeltext" title="Milch bearbeiten und überhaupt">Milch bearbeiten und überhaupt</div>
+                <div><button class="todo__button"></button></div>
                 </label>
             </li>
         </ul>

@@ -22,7 +22,7 @@ body{
     background-color: #f5f5f5;
 }
 
-h1{
+.header__title{
     font-size: 100px;
     font-weight: lighter;
     color: #af2f2f;
@@ -31,7 +31,7 @@ h1{
     margin-bottom: 20px;
 }
 
-main {
+.content {
     max-width: 500px;
     width: 50%;
     background-color: #ffffff;
@@ -42,14 +42,14 @@ main {
 
 }
 /*Inputbox*/
-input{
+.content__inputfield{
     padding:1rem 0 1rem 60px;
     font-weight: lighter;
     border: none;
     width: 100%;
 }
 
-input::placeholder{
+.content__inputfield::placeholder{
     color: #e6e6e6;
     font-weight: lighter;
     font-style: italic;
@@ -57,12 +57,7 @@ input::placeholder{
 
 /*List*/
 
-.todolist label{
-    display: flex;
-    justify-content: space-between;
-}
-
-ul.todolist > li{
+.todo__item{
     overflow: auto;
     list-style-type: none;
     border-top:1px solid #ededed;
@@ -70,14 +65,19 @@ ul.todolist > li{
     padding: 1rem 0;
 }
 
-.todoitem{
+.todo__label{
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo__checkbox, .todo__button{
     padding-left: 0.5rem;
     text-align: center;
     line-height: 40px;
     width: 60px;
 }
 
-.todoitem__label{
+.todo__labeltext{
     width: calc(100% - 120px);
     color: #4d4d4d;
     line-height: 40px;
@@ -86,27 +86,27 @@ ul.todolist > li{
     overflow: hidden;
 }
 
-button{
+.todo__button{
     border: none;
     color: #af2f2f;
     background-color: transparent;
 }
 
-li:hover button::after{
+.todo__item:hover .todo__button::after{
     content: "×";
 }
 
-.todoitem > [type="checkbox"]{
+.checkbox__input{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 30px;
 }
 
-.todoitem > [type="checkbox"]::after{
+.checkbox__input::after{
     content: url("if_uncheck.svg");
 }
 
-.todoitem > [type="checkbox"]:checked::after{
+.checkbox__input:checked::after{
     content: url("if_check.svg");
 }
