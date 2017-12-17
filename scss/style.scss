@@ -11,6 +11,7 @@ html{
   font-weight: $mainfont-weight;
   color:$primary-color;
 }
+
 *{
   margin: 0;
   padding: 0;
@@ -98,6 +99,23 @@ body{
     overflow: hidden;
   }
 
-
+  &__item:hover .todo__button::after{
+    content: "×";
+  }
 }
 
+.checkbox{
+  &__input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: $space-simple*1.5;
+  }
+
+  &__input::after{
+    content: url("../if_uncheck.svg");
+  }
+  &__input:checked::after{
+    content: url("../if_check.svg");
+  }
+}
