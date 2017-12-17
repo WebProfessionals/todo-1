@@ -1,0 +1,103 @@
+@import "colors";
+@import "fonts";
+@import "space";
+
+html{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: $mainfont-family;
+  font-size: 14px;
+  font-weight: $mainfont-weight;
+  color:$primary-color;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body{
+  background: $secondary-color;
+}
+
+.header{
+  &__title{
+    font-size: 100px;
+    font-weight: $mainfont-weight;
+    color: $highlight-color;
+    text-align: center;
+    opacity: 0.2;
+    margin-bottom: $space-simple;
+  }
+}
+
+.todo{
+  max-width: 500px;
+  width: 50%;
+  background-color: white;
+  margin: 0 auto;
+  border: 1px solid $border-color;
+  box-shadow: 0 8px 0 -5px white,0 9px 0 -5px $border-color, 1px 17px 0 -10px white, 1px 18px 0 -10px $border-color, 0 20px 20px -10px rgba(0, 0, 0, 0.2) ;
+  font-size: 1.71428571428514rem;
+
+  &__inputfield{
+    padding: $space-simple 0 $space-simple 60px;
+    font-weight: $mainfont-weight;
+    border: none;
+    width: 100%;
+  }
+
+  &__inputfield::placeholder{
+    color: $placeholder-color;
+    font-weight: $mainfont-weight;
+    font-style: italic;
+  }
+
+  &__item{
+    overflow: auto;
+    list-style-type: none;
+    border-top:1px solid $border-color;
+    width: 100%;
+    padding: $space-simple 0;
+  }
+
+  &__label{
+  display: flex;
+  justify-content: space-between;
+  }
+
+  &__checkbox{
+    padding-left: $space-simple/2;
+    text-align: center;
+    line-height: $space-simple*2;
+    width: $space-simple*3;
+  }
+
+  &__button{
+    padding-left: $space-simple/2;
+    width: $space-simple*3;
+    border: none;
+    text-align: center;
+    color: $highlight-color;
+    line-height: $space-simple*2;
+    background-color: transparent;
+  }
+
+  &__labeltext{
+    width: calc(100% - 120px);
+    color: $primary-color;
+    line-height: $space-simple*2;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+  }
+
+
+}
+
