@@ -31,7 +31,7 @@ body{
     margin-bottom: 20px;
 }
 
-.content {
+.todo {
     max-width: 500px;
     width: 50%;
     background-color: #ffffff;
@@ -42,14 +42,14 @@ body{
 
 }
 /*Inputbox*/
-.content__inputfield{
+.todo__inputfield{
     padding:1rem 0 1rem 60px;
     font-weight: lighter;
     border: none;
     width: 100%;
 }
 
-.content__inputfield::placeholder{
+.todo__inputfield::placeholder{
     color: #e6e6e6;
     font-weight: lighter;
     font-style: italic;
