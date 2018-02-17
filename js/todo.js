@@ -25,20 +25,33 @@ ready(() => {
   });
 
 
+  /**
+   * fügt einen Task der Liste(DOM) hinzu
+   * @param task
+   */
   let addTaskToList = (task)=>{
     let newDomItem = createItemDom(task);
     liste.appendChild(newDomItem);
   };
 
+
+  /**
+   * Baut die initiale Liste auf
+   * @param taskListe
+   */
   let initTaskList = (taskListe) => {
-    console.log(taskListe)
     taskListe.forEach(task => {
       let i = createItemDom(task)
       liste.appendChild(i);
     })
   };
 
-
+  /**
+   * Erstellt ein dom item für einen neuen task
+   * todo: muss noch vervollständigt werden
+   * @param task
+   * @returns {HTMLLIElement}
+   */
   let createItemDom = (task) => {
     let item = document.createElement('li');
     item.classList.add('todo__item');
@@ -46,6 +59,8 @@ ready(() => {
     return item;
   };
 
+
+  // Initialisiert die Liste
   liste.innerHTML = '';
   initTaskList(todoList.tasks);
 
