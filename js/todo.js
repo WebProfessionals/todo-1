@@ -1,6 +1,9 @@
 "use strict";
 
 let todoList = new TodoList();
+todoList.addTask('hahah');
+todoList.addTask('hahah');
+todoList.addTask('hahah');
 
 ready(() => {
 
@@ -12,10 +15,38 @@ ready(() => {
     inputEl.addEventListener('keypress', e => {
       if (e.keyCode === 13 && inputEl.value !== '') {
         // task der Liste hinzufügen
-        todoList.addTask(inputEl.value);
+        let task = todoList.addTask(inputEl.value);
+        addTaskToList(task);
         // input wieder leeren
         inputEl.value = '';
+
       }
     });
   });
+
+
+  let addTaskToList = (task)=>{
+    let newDomItem = createItemDom(task);
+    liste.appendChild(newDomItem);
+  };
+
+  let initTaskList = (taskListe) => {
+    console.log(taskListe)
+    taskListe.forEach(task => {
+      let i = createItemDom(task)
+      liste.appendChild(i);
+    })
+  };
+
+
+  let createItemDom = (task) => {
+    let item = document.createElement('li');
+    item.classList.add('todo__item');
+    item.innerText = task.text;
+    return item;
+  };
+
+  liste.innerHTML = '';
+  initTaskList(todoList.tasks);
+
 });
