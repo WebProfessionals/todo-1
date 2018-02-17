@@ -113,9 +113,9 @@ body{
   }
 
   &__input::after{
-    content: url("../if_uncheck.svg");
+    content: url("../media/if_uncheck.svg");
   }
   &__input:checked::after{
-    content: url("../if_check.svg");
+    content: url("../media/if_check.svg");
   }
 }

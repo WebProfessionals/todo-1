@@ -84,7 +84,7 @@ body {
   width: 30px; }
 
 .checkbox__input::after {
-  content: url("../if_uncheck.svg"); }
+  content: url("../media/if_uncheck.svg"); }
 
 .checkbox__input:checked::after {
-  content: url("../if_check.svg"); }
+  content: url("../media/if_check.svg"); }
