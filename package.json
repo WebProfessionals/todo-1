@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "flat":true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +18,6 @@
   },
   "homepage": "https://github.com/Liviak5/todo#readme",
   "dependencies": {
-    "@jslib/todooo": "WebProfessionals/todooo#^1.0.0"
+    "todooo": "WebProfessionals/todooo#^1.0.0"
   }
 }
