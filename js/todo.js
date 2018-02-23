@@ -1,14 +1,20 @@
 "use strict";
 
 let todoList = new TodoList();
-todoList.addTask('hahah');
-todoList.addTask('hahah');
-todoList.addTask('hahah');
+todoList.addTask('Milch kaufen');
+todoList.addTask('MacBook bestellen');
+todoList.addTask('Auto kaufen (ev. Leasen)');
 
 ready(() => {
 
   let taskInputFields = document.querySelectorAll('.todo__inputfield');
   let liste = document.getElementById('liste');
+
+  liste.addEventListener('click', e => {
+
+    console.dir(e.target)
+
+  });
 
   taskInputFields.forEach((inputEl) => {
     // Auf Enter Taste hören
@@ -29,7 +35,7 @@ ready(() => {
    * fügt einen Task der Liste(DOM) hinzu
    * @param task
    */
-  let addTaskToList = (task)=>{
+  let addTaskToList = (task) => {
     let newDomItem = createItemDom(task);
     liste.appendChild(newDomItem);
   };
@@ -41,7 +47,7 @@ ready(() => {
    */
   let initTaskList = (taskListe) => {
     taskListe.forEach(task => {
-      let i = createItemDom(task)
+      let i = createItemDom(task);
       liste.appendChild(i);
     })
   };
@@ -54,8 +60,23 @@ ready(() => {
    */
   let createItemDom = (task) => {
     let item = document.createElement('li');
+    item.task = task;
+
+    let del = document.createElement('button');
+    del.innerText='del';
+    del.classList.add('delete');
+    item.appendChild(del);
+
+    let erledigt = document.createElement('button');
+    erledigt.innerText='done';
+    erledigt.classList.add('erledigt');
+    item.appendChild(erledigt);
+
     item.classList.add('todo__item');
-    item.innerText = task.text;
+    let text = document.createElement('text');
+    text.innerText = task.text;
+    item.appendChild(text);
+
     return item;
   };
 
