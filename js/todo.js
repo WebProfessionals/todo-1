@@ -2,7 +2,7 @@
 
 let todoList = new TodoList();
 todoList.addTask('Milch kaufen');
-todoList.addTask('MacBook bestellen');
+todoList.addTask('MacBook bestellfsdsdffds↵en');
 todoList.addTask('Auto kaufen (ev. Leasen)');
 
 ready(() => {
@@ -17,6 +17,8 @@ ready(() => {
     loeschenWennMoeglich(e);
     erledigenWennMoeglich(e);
   });
+
+
   erledigtliste.addEventListener('click', e => {
     loeschenWennMoeglich(e);
     unerledigenWennMoeglich(e);
@@ -88,9 +90,13 @@ ready(() => {
     item.classList.add('todo__item');
     let text = document.createElement('text');
     text.innerText = task.text;
+    text.setAttribute('contentEditable',true);
+
+    text.addEventListener('blur', e => {
+      task.text = e.target.innerText;
+    });
+
     item.appendChild(text);
-
-
     return item;
   };
 
