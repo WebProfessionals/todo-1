@@ -2,6 +2,6 @@
 # yarn lockfile v1
 
 
-todooo@WebProfessionals/todooo#1.2.0:
-  version "1.2.0"
-  resolved "https://codeload.github.com/WebProfessionals/todooo/tar.gz/218b176f5dfbe3f24092ceb3dd887b6a46a582f7"
+todooo@WebProfessionals/todooo#^1.2.0:
+  version "1.3.0"
+  resolved "https://codeload.github.com/WebProfessionals/todooo/tar.gz/9871f32f4c2272aeca1c665d80208002a58bcfae"

@@ -1,9 +1,6 @@
 "use strict";
 
 let todoList = new TodoList();
-todoList.addTask('Milch kaufen');
-todoList.addTask('MacBook bdfs<br>$<br><br>estellfsdsdffds<br>en');
-todoList.addTask('Auto kaufen (ev. Leasen)');
 
 ready(() => {
 
@@ -12,12 +9,14 @@ ready(() => {
   let erledigtliste = document.getElementById('erledigtliste');
 
 
+  liste.addEventListener('text-blured',e=>{
+    textAktualisierenWennNoetig(e);
+  });
   // listener für Task Aktionen
   liste.addEventListener('click', e => {
     loeschenWennMoeglich(e);
     erledigenWennMoeglich(e);
   });
-
 
   erledigtliste.addEventListener('click', e => {
     loeschenWennMoeglich(e);
@@ -30,15 +29,14 @@ ready(() => {
     inputEl.addEventListener('keypress', e => {
       if (e.keyCode === 13 && inputEl.value !== '') {
         // task der Liste hinzufügen
+        // ?? direkte Manipulation des Models aus UI Code?
         let task = todoList.addTask(inputEl.value);
         addTaskToList(task);
         // input wieder leeren
         inputEl.value = '';
-
       }
     });
   });
-
 
   /**
    * fügt einen Task der Liste(DOM) hinzu
@@ -93,7 +91,10 @@ ready(() => {
     text.setAttribute('contentEditable',true);
 
     text.addEventListener('blur', e => {
-      task.text = e.target.innerHTML;
+
+      let customEvent = new Event('text-blured', {bubbles: true});
+      customEvent.detail = e.target;
+      text.dispatchEvent(customEvent);
     });
 
     item.appendChild(text);
@@ -106,6 +107,14 @@ ready(() => {
   initTaskList(todoList.tasks);
 
 
+  let textAktualisierenWennNoetig = e =>{
+    let task = e.detail.parentNode.task;
+    let uiText = e.detail.innerHTML;
+    if(task.text !==  uiText){
+      task.text = uiText;
+    }
+
+  };
   /**
    * prüft ob ein Eintrag als erledigt markiert werden kann,
    * und macht es dann auch gleich
