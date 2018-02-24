@@ -104,7 +104,10 @@ ready(() => {
 
   // Initialisiert die Liste
   liste.innerHTML = '';
-  initTaskList(todoList.tasks);
+  todoList.onInitComplete = ()=>{
+    initTaskList(todoList.tasks);
+  };
+
 
 
   let textAktualisierenWennNoetig = e =>{

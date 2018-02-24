@@ -7,6 +7,7 @@ ready(() => {
     return task;
   };
 
+  let maxID = 1;
   todoList.onInit = (liste) => {
     for(let task in localStorage){
       if(localStorage.hasOwnProperty(task)){
@@ -15,10 +16,13 @@ ready(() => {
         t.id = vorlage.id;
         t._position = vorlage._position;
         t.erledigt = vorlage.erledigt;
-
         todoList.tasks.push(t);
+        maxID = t.id + 2;
       }
     }
+
+    todoList._maxID = maxID;
+    todoList.onInitComplete();
   };
   todoList.onInit(todoList);
 
