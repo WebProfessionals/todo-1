@@ -100,12 +100,6 @@ let createDomItem = (task) => {
    */
   item.classList.add('todo__item');
 
-  /**
-   * Delete Button bekommt die Klasse delete weil wir in loeschenWennMoeglich diesen abfragen
-   */
-  deleteButton.innerText = 'del';
-  deleteButton.classList.add('delete');
-  item.appendChild(deleteButton);
 
   /**
    * Erledigt Button kann check oder uncheck sein.
@@ -134,6 +128,13 @@ let createDomItem = (task) => {
   });
   item.appendChild(text);
 
+
+  /**
+   * Delete Button bekommt die Klasse delete weil wir in loeschenWennMoeglich diesen abfragen
+   */
+  deleteButton.innerText = 'del';
+  deleteButton.classList.add('delete');
+  item.appendChild(deleteButton);
 
   return item;
 };
