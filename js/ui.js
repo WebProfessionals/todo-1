@@ -18,7 +18,7 @@ let createTaskFromInput = function (inputEl) {
  * @param task
  */
 let addTaskToUI = (task) => {
-  let newDomItem = createItemDom(task);
+  let newDomItem = createDomItem(task);
   liste.appendChild(newDomItem);
 };
 
@@ -29,7 +29,7 @@ let addTaskToUI = (task) => {
  */
 let initListInUI = (taskListe) => {
   taskListe.forEach(task => {
-    let i = createItemDom(task);
+    let i = createDomItem(task);
     liste.appendChild(i);
   })
 };
@@ -51,7 +51,7 @@ let textAktualisierenWennNoetig = e =>{
 let erledigenWennMoeglich = function (e) {
   if (e.target.classList.contains('check')) {
     e.target.parentNode.task.check();
-    erledigtliste.appendChild(createItemDom(e.target.parentNode.task));
+    erledigtliste.appendChild(createDomItem(e.target.parentNode.task));
     e.target.parentNode.remove();
   }
 };
@@ -76,7 +76,7 @@ let loeschenWennMoeglich = function (e) {
 let unerledigenWennMoeglich = function (e) {
   if (e.target.classList.contains('uncheck')) {
     e.target.parentNode.task.uncheck();
-    liste.appendChild(createItemDom(e.target.parentNode.task));
+    liste.appendChild(createDomItem(e.target.parentNode.task));
     e.target.parentNode.remove();
   }
 };
@@ -84,42 +84,56 @@ let unerledigenWennMoeglich = function (e) {
 
 /**
  * Erstellt ein dom item für einen neuen task
- * todo: muss noch vervollständigt werden
  * @param task
  * @returns {HTMLLIElement}
  */
-let createItemDom = (task) => {
+let createDomItem = (task) => {
   let item = document.createElement('li');
+  let deleteButton = document.createElement('button');
+  let erledigtButton = document.createElement('button');
+  let text = document.createElement('text');
+
   item.task = task;
+  /**
+   * leider müssen wir wegen dem zu spezifischen CSS die Klasse dem li hinzufügen.
+   * TODO: das CSS weniger spezifisch machen, damit wir dem li nicht noch extra eine Klasse zuweisen müssen.
+   */
+  item.classList.add('todo__item');
 
-  let del = document.createElement('button');
-  del.innerText = 'del';
-  del.classList.add('delete');
-  item.appendChild(del);
+  /**
+   * Delete Button bekommt die Klasse delete weil wir in loeschenWennMoeglich diesen abfragen
+   */
+  deleteButton.innerText = 'del';
+  deleteButton.classList.add('delete');
+  item.appendChild(deleteButton);
 
-  let erledigt = document.createElement('button');
+  /**
+   * Erledigt Button kann check oder uncheck sein.
+   */
   if (!task.erledigt) {
-    erledigt.innerText = '[ ]';
-    erledigt.classList.add('check');
-    item.appendChild(erledigt);
+    erledigtButton.innerText = '[ ]';
+    erledigtButton.classList.add('check');
+    item.appendChild(erledigtButton);
   } else {
-    erledigt.innerText = '[x]';
-    erledigt.classList.add('uncheck');
-    item.appendChild(erledigt);
+    erledigtButton.innerText = '[x]';
+    erledigtButton.classList.add('uncheck');
+    item.appendChild(erledigtButton);
   }
 
-  item.classList.add('todo__item');
-  let text = document.createElement('text');
+
+  /**
+   * Wir machen den Text direkt editierbar und benachrichtigen bei blur
+   * TODO: im CSS für den Text den outline auf none setzen.
+   */
   text.innerHTML = task.text;
   text.setAttribute('contentEditable',true);
-
   text.addEventListener('blur', e => {
-
     let customEvent = new Event('text-blured', {bubbles: true});
     customEvent.detail = e.target;
     text.dispatchEvent(customEvent);
   });
-
   item.appendChild(text);
+
+
   return item;
 };
