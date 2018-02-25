@@ -1,12 +1,14 @@
 "use strict";
 ready(() => {
 
+  // Callback wenn ein neuer Task erstellt wurde
   todoList.onNewTask = (task) => {
     let speicherName = 'task' + task.id;
     localStorage.setItem(speicherName, JSON.stringify(task));
     return task;
   };
 
+  // Callback wenn die Liste initialisiert wurde
   let maxID = 1;
   todoList.onInit = (liste) => {
     for(let task in localStorage){
@@ -25,5 +27,12 @@ ready(() => {
     todoList.onInitComplete();
   };
   todoList.onInit(todoList);
+
+
+  // Todo: Callback wenn ein neuer Task gelöscht wurde
+
+
+  // Todo: Callback wenn ein neuer Task aktualisiert wurde
+
 
 });
