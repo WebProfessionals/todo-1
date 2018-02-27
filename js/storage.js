@@ -29,10 +29,32 @@ ready(() => {
   todoList.onInit(todoList);
 
 
-  // Todo: Callback wenn ein neuer Task gelöscht wurde
+    // Todo: Callback wenn ein neuer Task gelöscht wurde
+    todoList.onDeleteTask = (taskToDelete) => {
+        for(let task in localStorage){
+            let taskFromStorage = JSON.parse(localStorage.getItem(task));
+            if(taskFromStorage.id === taskToDelete.id){
+                localStorage.removeItem('task'+taskFromStorage.id);
+                break;
+            }
+        }
+    };
 
 
-  // Todo: Callback wenn ein neuer Task aktualisiert wurde
+    // Todo: Callback wenn ein neuer Task aktualisiert wurde
+    TodoList.onUpdateTask = (taskToUpdate) => {
+        for(let task in localStorage){
+            let taskFromStorage = JSON.parse(localStorage.getItem(task));
+            if(taskFromStorage.id === taskToUpdate.id){
+                let template = '{"id":'+ taskToUpdate.id +
+                    ',"_text":"'+ taskToUpdate._text + '"' +
+                    ',"erledigt":'+ taskToUpdate.erledigt +
+                    ',"_position":'+ taskToUpdate._position +'}';
+                localStorage.setItem(task, template);
+                break;
+            }
+        }
+    };
 
 
 });
