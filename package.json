@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/Liviak5/todo#readme",
   "dependencies": {
-    "todooo": "WebProfessionals/todooo#^1.4.1"
+    "todooo": "WebProfessionals/todooo#^1.4.2"
   }
 }

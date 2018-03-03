@@ -11,25 +11,23 @@ ready(() => {
   // Callback wenn die Liste initialisiert wurde
   todoList.onInit = (liste) => {
 
-    let request = new XMLHttpRequest();
-    request.open('GET', './api/alltasks.json');
 
-    request.onload = (e) => {
-      if(request.status >= 400){
-        console.warn('Keine Verbindung zum Server möglich')
-        todoList._maxID = 1;
-      }else{
-        todoList._maxID = _taskObjErzeugenUndAnTodolistAnhaengen(JSON.parse(request.responseText));
-      }
+    let promisedJson = fetch('api/alltasks.json').then(function (response) {
+      return response.json();
+    });
 
+    promisedJson.then(json => {
+      todoList._maxID = _taskObjErzeugenUndAnTodolistAnhaengen(json);
+    });
 
+    promisedJson.catch(function (ex) {
+      console.warn('Konnte initale Liste nicht erstellen')
+      todoList._maxID = 1;
+    });
+
+    promisedJson.finally(() => {
       todoList.onInitComplete();
-
-    };
-
-
-
-    request.send();
+    });
 
   };
 
