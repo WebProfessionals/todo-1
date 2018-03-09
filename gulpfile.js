@@ -3,18 +3,14 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 
+
 gulp.task('babel', () =>
-    gulp.src('src/js/*.js')
+    gulp.src(['src/js/*.js','src/node_modules/todooo/todo.js'], {base:'src/'})
         .pipe(babel({
-          presets: ['@babel/env']
+          presets: ['env']
         }))
         .pipe(gulp.dest('dist'))
 );
-
-gulp.task('hello', () => {
-  console.log('Hello World');
-});
-
 
 gulp.task('sass', function () {
   return gulp.src('./src/scss/**/*.scss')
@@ -24,6 +20,18 @@ gulp.task('sass', function () {
       .pipe(gulp.dest('./src/css'));
 });
 
+
+gulp.task('copy', function () {
+  gulp
+      .src(['src/index.html', 'src/**/*.css'])
+      .pipe(gulp.dest('dist'));
+});
+
+gulp.task('assets', function () {
+  gulp
+      .src(['src/media/**/*.svg'])
+      .pipe(gulp.dest('dist/media'));
+});
 gulp.task('sass:watch', function () {
   gulp.watch('./src/scss/**/*.scss', ['sass']);
 });
