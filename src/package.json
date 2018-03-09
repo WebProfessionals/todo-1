@@ -19,8 +19,5 @@
   "homepage": "https://github.com/Liviak5/todo#readme",
   "dependencies": {
     "todooo": "WebProfessionals/todooo#^1.4.2"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1"
   }
 }
