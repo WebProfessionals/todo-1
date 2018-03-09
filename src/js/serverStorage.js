@@ -5,6 +5,7 @@ ready(() => {
   todoList.onNewTask = (task) => {
     let speicherName = 'task' + task.id;
     localStorage.setItem(speicherName, JSON.stringify(task));
+
     return task;
   };
 
