@@ -3,6 +3,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 
+gulp.task('build',['babel','sass','copy','assets']);
+
 
 gulp.task('babel', () =>
     gulp.src(['src/js/*.js','src/node_modules/todooo/todo.js'], {base:'src/'})
@@ -11,6 +13,7 @@ gulp.task('babel', () =>
         }))
         .pipe(gulp.dest('dist'))
 );
+
 
 gulp.task('sass', function () {
   return gulp.src('./src/scss/**/*.scss')
