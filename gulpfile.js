@@ -9,21 +9,20 @@ const browserSync = require('browser-sync').create();
 gulp.task('build', ['clean', 'babel', 'sass', 'copy']);
 
 
-gulp.task('clean', function () {
+gulp.task('clean', () => {
   return gulp.src('dist', {read: false})
       .pipe(clean());
 });
 
-gulp.task('babel', () =>
-    gulp.src(['src/js/*.js', 'src/node_modules/todooo/todo.js'], {base: 'src/'})
-        .pipe(babel({
-          presets: ['env']
-        }))
-        .pipe(gulp.dest('dist'))
+gulp.task('babel', () => {
+      gulp.src(['src/js/*.js', 'src/node_modules/todooo/todo.js'], {base: 'src/'})
+          .pipe(babel({presets: ['env']}))
+          .pipe(gulp.dest('dist'))
+    }
 );
 
 
-gulp.task('sass', function () {
+gulp.task('sass', () => {
   return gulp.src('./src/scss/**/*.scss')
       .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
@@ -35,13 +34,13 @@ gulp.task('sass', function () {
 });
 
 
-gulp.task('copy', function () {
+gulp.task('copy', () => {
   gulp
       .src(['src/index.html', 'src/**/*.css', 'src/media/**/*.svg'], {base: 'src/'})
       .pipe(gulp.dest('dist'));
 });
 
-gulp.task('browserSync', function () {
+gulp.task('browserSync', () => {
   browserSync.init({
     server: {
       baseDir: 'src'
@@ -50,6 +49,10 @@ gulp.task('browserSync', function () {
 });
 
 
-gulp.task('sass:watch', ['browserSync'], function () {
+gulp.task('sync:watch', ['browserSync'], () => {
+  gulp.watch('./src/scss/**/*.scss', ['sass']);
+});
+
+gulp.task('sass:watch', () => {
   gulp.watch('./src/scss/**/*.scss', ['sass']);
 });
